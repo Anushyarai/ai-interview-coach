@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="page-container">
+
+        <div class="dashboard">
+
+            <h1>Welcome, {{ name }}</h1>
+
+            <p class="dashboard-subtitle">
+                Your AI-powered interview analytics dashboard
+            </p>
+
+            <!-- ANALYTICS -->
+            <div class="dashboard-cards">
+
+                <div class="card">
+
+                    <h2>Total Interviews</h2>
+
+                    <p class="big-number">
+                        {{ total_interviews }}
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>Average Score</h2>
+
+                    <p class="big-number">
+                        {{ average_score }}/10
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>Best Performance</h2>
+
+                    <p class="big-number">
+                        {{ best_performance }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="dashboard-cards">
+
+                
+                <div class="card">
+
+                    <h2>Upload Resume</h2>
+
+                    <p>
+                        Upload your resume for AI analysis.
+                    </p>
+
+                    <br>
+
+                    <a href="/upload">
+
+                        <button>
+                            Upload Resume
+                        </button>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- AI INSIGHTS -->
+            <div class="card">
+
+                <h2>AI Insights</h2>
+
+                <br>
+
+                <p>
+
+                    {{ ai_insight }}
+
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

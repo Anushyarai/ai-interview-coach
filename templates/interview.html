@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>AI Interview</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <div class="dashboard">
+
+            <h1>AI Mock Interview</h1>
+
+            <div class="timer-box">
+
+                Time Remaining:
+                <span id="timer">05:00</span>
+
+            </div>
+
+            <p class="dashboard-subtitle">
+
+                Answer carefully like a real interview
+
+            </p>
+
+            <div class="interview-box">
+
+                <div class="card">
+
+                    <h2 class="question-text">
+
+                        {{ question }}
+
+                    </h2>
+
+                    <br>
+
+                    <form action="/evaluate" method="POST">
+
+                        <input
+                            type="hidden"
+                            name="question"
+                            value="{{ question }}"
+                        >
+
+                        <textarea
+                            name="answer"
+                            rows="8"
+                            placeholder="Type your answer..."
+                            required
+                        ></textarea>
+
+                        <br><br>
+
+                        <button type="submit">
+
+                            Submit Answer
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let timeLeft = 300;
+
+        const timer = document.getElementById("timer");
+
+        const countdown = setInterval(() => {
+
+            let minutes = Math.floor(timeLeft / 60);
+
+            let seconds = timeLeft % 60;
+
+            seconds = seconds < 10
+                ? "0" + seconds
+                : seconds;
+
+            timer.innerHTML =
+                `${minutes}:${seconds}`;
+
+            timeLeft--;
+
+            if(timeLeft < 0){
+
+                clearInterval(countdown);
+
+                alert("Interview Time Finished");
+
+                window.location.href =
+                "/final_report";
+            }
+
+        }, 1000);
+
+    </script>
+
+</body>
+
+</html>
+

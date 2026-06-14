@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analysis</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <h1>AI Resume Analysis Report</h1>
+
+        <p class="dashboard-subtitle">
+
+            Personalized AI-powered resume feedback
+
+        </p>
+
+        <!-- DETECTED ROLE -->
+
+        <div class="card">
+
+            <h2>Detected Role</h2>
+
+            <br>
+
+            <p class="big-number">
+
+                {{ role }}
+
+            </p>
+
+        </div>
+
+        <br><br>
+
+        <!-- ATS SCORE -->
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+
+                <h2>ATS Resume Score</h2>
+
+                <br>
+
+                <p style="font-size:60px;">
+
+                    {{ analysis.score }}/10
+
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Overall Feedback</h2>
+
+                <br>
+
+                <p style="font-size:30px;">
+
+                    {{ analysis.overall }}
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <!-- SKILLS -->
+
+        <div class="card">
+
+            <h2>Detected Skills</h2>
+
+            <br>
+
+            {% for skill in skills %}
+
+                <p>✅ {{ skill }}</p>
+
+            {% endfor %}
+
+        </div>
+
+        <br><br>
+
+        <!-- STRENGTHS -->
+
+        <div class="card">
+
+            <h2>Resume Strengths</h2>
+
+            <br>
+
+            {% for item in analysis.strengths %}
+
+                <p>✅ {{ item }}</p>
+
+            {% endfor %}
+
+        </div>
+
+        <br><br>
+
+        <!-- WEAKNESSES -->
+
+        <div class="card">
+
+            <h2>Areas To Improve</h2>
+
+            <br>
+
+            {% for item in analysis.weaknesses %}
+
+                <p>❌ {{ item }}</p>
+
+            {% endfor %}
+
+        </div>
+
+        <br><br>
+
+        <!-- SUGGESTIONS -->
+
+        <div class="card">
+
+            <h2>AI Suggestions</h2>
+
+            <br>
+
+            {% for item in analysis.suggestions %}
+
+                <p>💡 {{ item }}</p>
+
+            {% endfor %}
+
+        </div>
+
+        <br><br><br>
+
+        <!-- START INTERVIEW BUTTON -->
+
+        <div style="text-align:center;">
+
+            <form action="/interview" method="GET">
+
+                <button type="submit"
+                class="hero-btn">
+
+                    Start AI Interview
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <br><br>
+
+    </div>
+
+</body>
+
+</html>
+

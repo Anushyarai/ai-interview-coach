@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Final Interview Report</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+    <div class="page-container">
+
+        <div class="dashboard">
+
+            <h1>AI Interview Final Report</h1>
+
+            <p class="dashboard-subtitle">
+
+                Complete interview performance analysis
+
+            </p>
+
+            <!-- SCORE -->
+
+            <div class="dashboard-cards">
+
+                <div class="card analytics-card">
+
+                    <h2>Overall Score</h2>
+
+                    <p class="big-number">
+
+                        {{ average_score }}/10
+
+                    </p>
+
+                </div>
+
+                <div class="card analytics-card">
+
+                    <h2>Overall Performance</h2>
+
+                    <p class="big-number">
+
+                        {{ overall }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- STRENGTHS -->
+
+            <div class="card">
+
+                <h2>Strengths</h2>
+
+                <br>
+
+                {% for item in strengths %}
+
+                    <p>✅ {{ item }}</p>
+
+                {% endfor %}
+
+            </div>
+
+            <br><br>
+
+            <!-- WEAKNESSES -->
+
+            <div class="card">
+
+                <h2>Areas to Improve</h2>
+
+                <br>
+
+                {% for item in weaknesses %}
+
+                    <p>❌ {{ item }}</p>
+
+                {% endfor %}
+
+            </div>
+
+            <br><br>
+
+            <div class="card">
+
+                <h2>Weak Topics Detected</h2>
+
+                <br>
+
+                {% if weak_topics %}
+
+                    {% for topic in weak_topics %}
+
+                        <p>⚠️ {{ topic }}</p>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>No major weak topics detected.</p>
+
+                {% endif %}
+
+            </div>
+
+            <br><br>
+
+            <div style="text-align:center;">
+
+                <a href="/dashboard">
+
+                    <button class="hero-btn">
+
+                        Go To Dashboard
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

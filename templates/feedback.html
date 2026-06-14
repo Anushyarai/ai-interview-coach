@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Feedback</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="page-container">
+
+        <div class="dashboard">
+
+            <h1>Answer Evaluation</h1>
+
+            <p class="dashboard-subtitle">
+                AI-powered feedback and performance analysis
+            </p>
+
+            <div class="interview-box">
+
+                <div class="card">
+
+                    <h2>Question</h2>
+
+                    <p>{{ question }}</p>
+
+                    <br><br>
+
+                    <h2>Your Answer</h2>
+
+                    <p>{{ answer }}</p>
+
+                    <br><br>
+
+                    <h2>Score</h2>
+
+                    <p class="big-number">
+                        {{ score }}/10
+                    </p>
+
+                    <br>
+
+                    <h2>Performance</h2>
+
+                    <p>
+                        {{ performance }}
+                    </p>
+
+                    <br><br>
+
+                    <h2>AI Feedback</h2>
+
+                    <div class="feedback-list">
+
+                        {% for item in feedback %}
+
+                            <p>• {{ item }}</p>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <br><br>
+
+                    <a href="/interview">
+
+                        <button>
+                            Continue Interview
+                            
+                        </button>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
